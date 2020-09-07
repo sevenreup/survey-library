@@ -12,7 +12,7 @@ import com.skybox.seven.survey.helper.BasicFragmentArgs
 
 
 class StartStepFragment : Fragment() {
-    val viewModel: SurveyViewModel by activityViewModels()
+    private val viewModel: SurveyViewModel by activityViewModels()
     private lateinit var binding: FragmentStartStepBinding
     lateinit var args: BasicFragmentArgs
 
@@ -29,7 +29,7 @@ class StartStepFragment : Fragment() {
     }
 
     fun goNext() {
-        viewModel.goToNext.value = true
+        viewModel.next.value = true
     }
 
     companion object {

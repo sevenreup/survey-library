@@ -10,23 +10,11 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-    <LinearLayout
+    <LinearLayout android:id="@+id/holder"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <LinearLayout
-            android:id="@+id/holder"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical" />
-
-        <com.google.android.material.button.MaterialButton android:id="@+id/next"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:onClick="@{() -> fragment.validate()}"
-            android:text="@{fragment.viewModel.utilityText.next}"
-            android:layout_gravity="center" />
     </LinearLayout>
 </androidx.core.widget.NestedScrollView>
 </layout>

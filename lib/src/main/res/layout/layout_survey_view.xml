@@ -6,20 +6,20 @@
             name="view"
             type="com.skybox.seven.survey.SurveyView" />
         <import type="android.view.View"/>
+        <import type="com.skybox.seven.survey.helper.Helpers"/>
     </data>
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:padding="16dp">
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/next"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Previous"
-            android:onClick="@{() -> view.previousTab()}"
-            android:visibility="@{view.viewModel.previous ? View.VISIBLE : View.GONE}"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:text="Close"
+            android:onClick="@{() -> view.closeSurvey()}"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
 
         <androidx.viewpager2.widget.ViewPager2
             android:id="@+id/pager"
@@ -28,18 +28,56 @@
             app:layout_constraintBottom_toTopOf="@id/tab_layout"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/next" />
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/previous"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:icon="@drawable/ic_prev"
+            style="?materialButtonOutlinedStyle"
+            android:insetLeft="0dp"
+            android:insetTop="0dp"
+            android:insetRight="0dp"
+            android:insetBottom="0dp"
+            app:strokeWidth="0dp"
+            app:iconGravity="textStart"
+            app:iconPadding="0dp"
+            android:onClick="@{() -> view.previousTab()}"
+            android:visibility="@{view.viewModel.previous ? View.VISIBLE : View.GONE}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent" />
 
         <com.google.android.material.tabs.TabLayout
             android:id="@+id/tab_layout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintTop_toTopOf="@id/previous"
+            app:layout_constraintBottom_toBottomOf="@id/previous"
+            app:layout_constraintStart_toEndOf="@id/previous"
+            app:layout_constraintEnd_toStartOf="@id/next"
             app:tabBackground="@drawable/tab_pager_selector"
             app:tabGravity="center"
             app:tabIndicatorHeight="0dp" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/next"
+            style="?materialButtonOutlinedStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:enabled="@{view.viewModel.goToNext}"
+            android:insetLeft="0dp"
+            android:insetTop="0dp"
+            android:insetRight="0dp"
+            android:insetBottom="0dp"
+            app:strokeWidth="0dp"
+            app:icon="@drawable/ic_next_full"
+            app:iconGravity="textStart"
+            app:iconPadding="0dp"
+            android:onClick="@{() -> view.nextTab()}"
+            android:visibility="@{Helpers.checkBetween(view.viewModel.currentPage, view.viewModel.total) ? View.VISIBLE : View.GONE}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

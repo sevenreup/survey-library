@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.CompoundButton
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import com.google.android.material.checkbox.MaterialCheckBox
@@ -39,6 +40,9 @@ class MultiSelectionFragment : Fragment() {
             val check = MaterialCheckBox(context).apply {
                 text = it
             }
+            check.setOnCheckedChangeListener { _: CompoundButton, _: Boolean ->
+                validate()
+            }
             binding.holder.addView(check)
             checkBoxes.add(check)
         }
@@ -46,21 +50,19 @@ class MultiSelectionFragment : Fragment() {
         return binding.root
     }
 
-    fun validate() {
+    private fun validate() {
         checkBoxes.forEach {
             if (it.isChecked) {
                 oneChecked = true
                 return@forEach
             }
         }
-        if (oneChecked)
-            viewModel.goToNext.value = true
-        else
-            showError()
+        viewModel.goToNext.value = oneChecked
     }
 
-    private fun showError() {
-
+    override fun onResume() {
+        super.onResume()
+        validate()
     }
 
     companion object {

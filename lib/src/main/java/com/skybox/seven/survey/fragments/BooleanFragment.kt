@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.RadioGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import com.skybox.seven.survey.SurveyViewModel
@@ -31,16 +32,16 @@ class BooleanFragment : Fragment() {
             removeAllViews()
             addView(createRadioButton("yes", "yes", context))
             addView(createRadioButton("no", "no", context))
+            setOnCheckedChangeListener { _: RadioGroup, _: Int ->
+                viewModel.goToNext.value = (this.checkedRadioButtonId != -1)
+            }
         }
         return binding.root
     }
 
-    fun goNext() {
-        if (binding.radioGroup.checkedRadioButtonId == -1) {
-            // error
-        } else {
-            viewModel.goToNext.value = true
-        }
+    override fun onResume() {
+        super.onResume()
+        viewModel.goToNext.value = (binding.radioGroup.checkedRadioButtonId != -1)
     }
 
     companion object {

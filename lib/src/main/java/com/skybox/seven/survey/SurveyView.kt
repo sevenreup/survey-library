@@ -29,6 +29,11 @@ class SurveyView @JvmOverloads constructor(context: Context, attrs: AttributeSet
         viewModel = surveyViewModel
         this.configs = configs
         adapter = StepAdapter(configs.fa, steps)
+        viewModel.total.value = steps.size
+        setUp()
+    }
+
+    private fun setUp() {
         binding.pager.registerOnPageChangeCallback(object: ViewPager2.OnPageChangeCallback() {
             override fun onPageSelected(position: Int) {
                 super.onPageSelected(position)
@@ -38,11 +43,10 @@ class SurveyView @JvmOverloads constructor(context: Context, attrs: AttributeSet
         })
         binding.pager.adapter = adapter
         TabLayoutMediator(binding.tabLayout, binding.pager) { _, _ ->}.attach()
-        setUp()
-    }
 
-    private fun setUp() {
-        viewModel.goToNext.observe(configs.lifecycleOwner, { nextTab() })
+        viewModel.next.observe(configs.lifecycleOwner, {
+            nextTab()
+        })
     }
 
     fun previousTab() {
@@ -51,5 +55,9 @@ class SurveyView @JvmOverloads constructor(context: Context, attrs: AttributeSet
 
     fun nextTab() {
         binding.pager.currentItem = binding.pager.currentItem + 1
+    }
+
+    fun closeSurvey() {
+
     }
 }
