@@ -9,14 +9,15 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import com.google.android.material.checkbox.MaterialCheckBox
 import com.skybox.seven.survey.SurveyViewModel
+import com.skybox.seven.survey.databinding.FragmentBooleanBinding
 import com.skybox.seven.survey.databinding.FragmentMultiSelectionBinding
 import com.skybox.seven.survey.helper.QuestionFragmentArgs
 
-private const val LIST_OFF_QUESTIONS = "question_list"
+private const val LIST_OFF_QUESTIONS = "question_list"  
 
 class MultiSelectionFragment : Fragment() {
-    val viewModel: SurveyViewModel by activityViewModels()
-    private lateinit var binding: FragmentMultiSelectionBinding
+    private val viewModel: SurveyViewModel by activityViewModels()
+    private lateinit var binding: FragmentBooleanBinding
 
     lateinit var args: QuestionFragmentArgs
     var answers: ArrayList<String>? = null
@@ -31,11 +32,11 @@ class MultiSelectionFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
-        binding = FragmentMultiSelectionBinding.inflate(inflater, container, false)
-
-        binding.fragment = this
+        binding = FragmentBooleanBinding.inflate(inflater, container, false)
+        binding.args = args
         binding.lifecycleOwner = viewLifecycleOwner
 
+        binding.owner.removeView(binding.radioGroup)
         answers?.forEach {
             val check = MaterialCheckBox(context).apply {
                 text = it

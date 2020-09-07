@@ -14,7 +14,7 @@ import com.skybox.seven.survey.views.createRadioButton
 
 
 class BooleanFragment : Fragment() {
-    val viewModel: SurveyViewModel by activityViewModels()
+    private val viewModel: SurveyViewModel by activityViewModels()
     lateinit var args: QuestionFragmentArgs
     private lateinit var binding: FragmentBooleanBinding
 
@@ -26,8 +26,9 @@ class BooleanFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         binding = FragmentBooleanBinding.inflate(inflater, container, false)
-        binding.fragment = this
+        binding.args = args
         binding.lifecycleOwner = viewLifecycleOwner
+        binding.owner.removeView(binding.holder)
         binding.radioGroup.apply {
             removeAllViews()
             addView(createRadioButton("yes", "yes", context))

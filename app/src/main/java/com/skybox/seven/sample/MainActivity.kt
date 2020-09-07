@@ -22,17 +22,17 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
         val steps = listOf(
             StartStep(
-                "R.string.self_test_intro_title",
-                "R.string.self_test_intro_sub_title",
-                "R.string.self_test_intro_sub_title"
+                "Welcome to our Amazing survey",
+                "Get ready to get your socks blown off",
+                "Start"
             ),
             BooleanStep(
-                "R.string.self_test_intro_sub_title",
-                "R.string.self_test_intro_sub_title"
+                "This is a boolean question",
+                "The user has to answer one choice"
             ),
             MultiSelectionStep(
-                "R.string.self_test_intro_sub_title",
-                "R.string.self_test_intro_sub_title",
+                "This is a multiple selection Question",
+                "The user has multiple options",
                 arrayListOf(
                     "one",
                     "two",
@@ -42,9 +42,9 @@ class MainActivity : AppCompatActivity() {
                 )
             ),
             EndStep(
-                "R.string.self_test_intro_sub_title",
-                "R.string.self_test_intro_sub_title",
-                "R.string.self_test_intro_sub_title"
+                "Thank you for taking this journey",
+                "Those were some of the features",
+                "Finish"
             )
         )
         val config = SurveyConfigs(this, this,

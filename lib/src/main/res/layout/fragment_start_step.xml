@@ -1,54 +1,85 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
         <variable
-            name="fragment"
-            type="com.skybox.seven.survey.fragments.StartStepFragment" />
+            name="args"
+            type="com.skybox.seven.survey.helper.BasicFragmentArgs" />
     </data>
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <ImageView android:id="@+id/image"
+        <ImageView
+            android:id="@+id/image"
             android:layout_width="wrap_content"
-            android:layout_height="200dp"
-            android:layout_marginTop="16dp"
-            app:layout_constraintTop_toTopOf="parent"
+            android:layout_height="222dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginBottom="32dp"
+            app:layout_constraintBottom_toTopOf="@id/title"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"/>
+            app:layout_constraintStart_toStartOf="parent"
+            tools:src="@tools:sample/avatars" />
+
+        <androidx.constraintlayout.widget.Guideline android:id="@+id/guide"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.5"/>
 
         <TextView
             android:id="@+id/title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@{fragment.args.title}"
-            app:layout_constraintBottom_toTopOf="@id/sub_title"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginBottom="8dp"
+            android:text="@{args.title}"
+            android:textAppearance="?textAppearanceHeadline5"
+            app:layout_constraintBottom_toTopOf="@id/guide"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/image" />
+            app:layout_constraintTop_toTopOf="@id/guide"
+            tools:text="This is the first" />
 
         <TextView
             android:id="@+id/sub_title"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="@{fragment.args.subTitle}"
-            app:layout_constraintBottom_toTopOf="@id/start"
+            android:textAlignment="center"
+            android:layout_marginStart="32dp"
+            android:layout_marginLeft="32dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="32dp"
+            android:layout_marginRight="32dp"
+            android:layout_marginBottom="8dp"
+            android:text="@{args.subTitle}"
+            android:textAppearance="?textAppearanceHeadline6"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/title" />
+            app:layout_constraintTop_toBottomOf="@id/title"
+            app:layout_constraintVertical_bias="0.13"
+            tools:text="This is the subtitle"
+            android:gravity="center_horizontal" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/start"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="32dp"
-            android:onClick="@{() -> fragment.goNext()}"
-            android:text="@{fragment.args.nextTitle}"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginTop="16dp"
+            android:text="@{args.nextTitle}"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/sub_title" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

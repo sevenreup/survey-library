@@ -24,7 +24,8 @@ class StartStepFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         binding = FragmentStartStepBinding.inflate(inflater, container, false)
-        binding.fragment = this
+        binding.args = args
+        binding.start.setOnClickListener {goNext()}
         return binding.root
     }
 
