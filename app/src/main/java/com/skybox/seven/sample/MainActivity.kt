@@ -6,6 +6,7 @@ import androidx.activity.viewModels
 import com.skybox.seven.sample.databinding.ActivityMainBinding
 import com.skybox.seven.survey.SurveyViewModel
 import com.skybox.seven.survey.config.SurveyConfigs
+import com.skybox.seven.survey.config.UtilityText
 import com.skybox.seven.survey.model.BooleanStep
 import com.skybox.seven.survey.model.EndStep
 import com.skybox.seven.survey.model.MultiSelectionStep
@@ -17,7 +18,8 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
         val steps = listOf(
             StartStep(
                 "R.string.self_test_intro_title",
@@ -45,7 +47,8 @@ class MainActivity : AppCompatActivity() {
                 "R.string.self_test_intro_sub_title"
             )
         )
-        val config = SurveyConfigs(this, this)
+        val config = SurveyConfigs(this, this,
+            UtilityText("Next", "Cancel"))
         binding.surveyView.start(steps, config, surveyViewModel)
     }
 }

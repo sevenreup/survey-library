@@ -5,11 +5,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
+import com.skybox.seven.survey.SurveyViewModel
 import com.skybox.seven.survey.databinding.FragmentStartStepBinding
 import com.skybox.seven.survey.helper.BasicFragmentArgs
 
 
 class StartStepFragment : Fragment() {
+    val viewModel: SurveyViewModel by activityViewModels()
     private lateinit var binding: FragmentStartStepBinding
     lateinit var args: BasicFragmentArgs
 
@@ -23,6 +26,10 @@ class StartStepFragment : Fragment() {
         binding = FragmentStartStepBinding.inflate(inflater, container, false)
         binding.fragment = this
         return binding.root
+    }
+
+    fun goNext() {
+        viewModel.goToNext.value = true
     }
 
     companion object {
