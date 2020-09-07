@@ -5,6 +5,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
+import com.skybox.seven.survey.SurveyViewModel
 import com.skybox.seven.survey.databinding.FragmentEndStepBinding
 import com.skybox.seven.survey.databinding.FragmentStartStepBinding
 import com.skybox.seven.survey.helper.BasicFragmentArgs
@@ -13,6 +15,7 @@ import com.skybox.seven.survey.helper.BasicFragmentArgs
 class EndStepFragment : Fragment() {
     private lateinit var binding: FragmentStartStepBinding
     lateinit var args: BasicFragmentArgs
+    private val viewModel: SurveyViewModel by activityViewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,6 +31,7 @@ class EndStepFragment : Fragment() {
     }
 
     private fun finish() {
+        viewModel.finish.value = true
     }
 
     companion object {

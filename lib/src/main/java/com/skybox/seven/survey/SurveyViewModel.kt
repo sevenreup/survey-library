@@ -9,9 +9,9 @@ class SurveyViewModel : ViewModel() {
     val previous: MutableLiveData<Boolean> = MutableLiveData()
     val next: MutableLiveData<Boolean> = MutableLiveData()
     val currentPage: MutableLiveData<Int> = MutableLiveData()
-    val answers: MutableLiveData<Result> = MutableLiveData()
+    val answers: MutableLiveData<HashMap<Int, Result>> = MutableLiveData(HashMap())
 
-    val utilityText: MutableLiveData<UtilityText> = MutableLiveData()
+    val finish: MutableLiveData<Boolean> = MutableLiveData()
     val goToNext: MutableLiveData<Boolean> = MutableLiveData()
     val total: MutableLiveData<Int> = MutableLiveData()
 }

@@ -4,7 +4,9 @@ import kotlinx.android.parcel.Parcelize
 import java.util.*
 
 @Parcelize
-data class BooleanResult(override val id: String,
-                         override val startDate: Date,
-                         override var endDate: Date,
-                         val answer: Boolean): Result
+data class BooleanResult(override var id: Int = 0,
+                         override var startDate: Date = Date(),
+                         override var endDate: Date = Date(),
+                         var answer: Boolean = false,
+                         override val type: Int = Result.BOOL
+): Result

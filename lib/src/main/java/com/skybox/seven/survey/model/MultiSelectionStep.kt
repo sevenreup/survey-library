@@ -5,13 +5,13 @@ import com.skybox.seven.survey.fragments.MultiSelectionFragment
 import java.util.*
 import kotlin.collections.ArrayList
 
-class MultiSelectionStep(val title: String,
+class MultiSelectionStep(override val id: Int,
+                         val title: String,
                          private val subTile: String,
-                         private val answers: ArrayList<String>): Step {
-    override val id: String
-        get() = UUID.randomUUID().toString()
+                         private val answers: ArrayList<String>
+): Step {
 
     override fun getFragment(): Fragment {
-        return MultiSelectionFragment.newInstance(title, subTile, answers)
+        return MultiSelectionFragment.newInstance(id, title, subTile, answers)
     }
 }

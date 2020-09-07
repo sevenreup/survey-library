@@ -47,6 +47,10 @@ class SurveyView @JvmOverloads constructor(context: Context, attrs: AttributeSet
         viewModel.next.observe(configs.lifecycleOwner, {
             nextTab()
         })
+
+        viewModel.finish.observe(configs.lifecycleOwner, {
+            configs.callbacks.finished(viewModel.answers.value)
+        })
     }
 
     fun previousTab() {
