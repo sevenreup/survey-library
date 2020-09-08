@@ -57,6 +57,7 @@
             app:layout_constraintStart_toEndOf="@id/previous"
             app:layout_constraintEnd_toStartOf="@id/next"
             app:tabBackground="@drawable/tab_pager_selector"
+            android:background="@android:color/transparent"
             app:tabGravity="center"
             app:tabIndicatorHeight="0dp" />
 

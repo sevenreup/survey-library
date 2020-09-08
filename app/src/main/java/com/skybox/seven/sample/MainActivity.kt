@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.util.Log
 import androidx.activity.viewModels
 import com.skybox.seven.sample.databinding.ActivityMainBinding
+import com.skybox.seven.survey.SurveyView
 import com.skybox.seven.survey.SurveyViewModel
 import com.skybox.seven.survey.answer.BooleanResult
 import com.skybox.seven.survey.answer.MultiChoiceResult
@@ -25,7 +26,7 @@ class MainActivity : AppCompatActivity(), SurveyCallbacks {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        val steps = listOf(
+        val steps = arrayListOf(
             StartStep(0,
                 "Welcome to our Amazing survey",
                 "Get ready to get your socks blown off",
@@ -52,9 +53,9 @@ class MainActivity : AppCompatActivity(), SurveyCallbacks {
                 "Finish"
             )
         )
-        val config = SurveyConfigs(this, this,
-            UtilityText("Next", "Cancel"), this)
-        binding.surveyView.start(steps, config, surveyViewModel)
+        val config = UtilityText("Next", "Cancel");
+        val fragment = SurveyView.newInstance(steps, config)
+        supportFragmentManager.beginTransaction().add(R.id.survey_view, fragment).commit()
     }
 
     override fun finished(answers: HashMap<Int, Result>?) {
