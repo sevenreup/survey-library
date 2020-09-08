@@ -24,7 +24,7 @@
 
         <TextView
             android:id="@+id/title"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginLeft="16dp"
@@ -33,11 +33,13 @@
             android:layout_marginRight="16dp"
             android:layout_marginBottom="8dp"
             android:text="@{args.title}"
+            android:textAlignment="center"
             android:textAppearance="?textAppearanceHeadline5"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/guide"
-            tools:text="This is the title" />
+            tools:text="This is the title"
+            android:gravity="center_horizontal" />
 
         <TextView
             android:id="@+id/sub_title"
