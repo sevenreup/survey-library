@@ -9,7 +9,8 @@ interface Result: Parcelable {
     var endDate: Date
     val type: Int
     companion object {
-        val BOOL = 0
-        val MULTI = 1
+        const val BOOL = 0
+        const val MULTI = 1
+        const val TEXT = 3
     }
 }

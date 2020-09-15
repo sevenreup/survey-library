@@ -36,8 +36,8 @@ class BooleanFragment : Fragment() {
         binding.owner.removeView(binding.holder)
         binding.radioGroup.apply {
             removeAllViews()
-            addView(createRadioButton("yes", "yes", context))
-            addView(createRadioButton("no", "no", context))
+            addView(createRadioButton(viewModel.utilityText.value!!.yes , "yes", context))
+            addView(createRadioButton(viewModel.utilityText.value!!.yes, "no", context))
             setOnCheckedChangeListener { _, _: Int ->
                 answer.answer = (this.checkedRadioButtonId != -1)
                 viewModel.answers.value?.set(args.id, answer)

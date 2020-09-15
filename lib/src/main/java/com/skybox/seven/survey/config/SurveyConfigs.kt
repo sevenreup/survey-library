@@ -12,4 +12,4 @@ data class SurveyConfigs(val fa: FragmentActivity,
                          val callbacks: SurveyCallbacks)
 
 @Parcelize
-data class UtilityText(val next: String, val cancel: String) : Parcelable
+data class UtilityText(val next: String, val cancel: String, val yes: String, val no: String) : Parcelable

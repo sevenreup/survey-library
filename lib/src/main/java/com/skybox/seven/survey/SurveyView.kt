@@ -31,6 +31,7 @@ class SurveyView : Fragment() {
         args = SurveyArgs(requireArguments())
         adapter = args.steps?.let { StepAdapter(this, it) }!!
         viewModel.total.value = args.steps?.size
+        viewModel.utilityText.value = args.utilityText
     }
 
     override fun onAttach(context: Context) {
@@ -83,7 +84,7 @@ class SurveyView : Fragment() {
     }
 
     fun closeSurvey() {
-
+        listener?.surveyClosed()
     }
 
     companion object {

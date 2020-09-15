@@ -14,4 +14,6 @@ class SurveyViewModel : ViewModel() {
     val finish: MutableLiveData<Boolean> = MutableLiveData()
     val goToNext: MutableLiveData<Boolean> = MutableLiveData()
     val total: MutableLiveData<Int> = MutableLiveData()
+
+    val utilityText = MutableLiveData<UtilityText>()
 }

@@ -13,14 +13,10 @@ import com.skybox.seven.survey.answer.Result
 import com.skybox.seven.survey.config.SurveyConfigs
 import com.skybox.seven.survey.config.UtilityText
 import com.skybox.seven.survey.helper.SurveyCallbacks
-import com.skybox.seven.survey.model.BooleanStep
-import com.skybox.seven.survey.model.EndStep
-import com.skybox.seven.survey.model.MultiSelectionStep
-import com.skybox.seven.survey.model.StartStep
+import com.skybox.seven.survey.model.*
 
 class MainActivity : AppCompatActivity(), SurveyCallbacks {
     private lateinit var binding: ActivityMainBinding
-    private val surveyViewModel: SurveyViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -47,13 +43,16 @@ class MainActivity : AppCompatActivity(), SurveyCallbacks {
                     "five"
                 )
             ),
-            EndStep(3,
+            TextStep(3, "This is a text Question",
+                "Please choose and answer in the text box", true,
+                "Answer Here"),
+            EndStep(4,
                 "Thank you for taking this journey",
                 "Those were some of the features",
                 "Finish"
             )
         )
-        val config = UtilityText("Next", "Cancel");
+        val config = UtilityText("Next", "Cancel", "Yes", "No");
         val fragment = SurveyView.newInstance(steps, config)
         supportFragmentManager.beginTransaction().add(R.id.survey_view, fragment).commit()
     }
@@ -72,5 +71,9 @@ class MainActivity : AppCompatActivity(), SurveyCallbacks {
                 }
             }
         }
+    }
+
+    override fun surveyClosed() {
+        supportFragmentManager.beginTransaction().replace(R.id.survey_view, FinishedFragment()).commit()
     }
 }
