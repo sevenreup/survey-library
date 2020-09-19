@@ -43,6 +43,14 @@ class MainActivity : AppCompatActivity(), SurveyCallbacks {
                     "five"
                 )
             ),
+            ArrayBooleanStep(3,
+                "This is a listed response",
+                "this ",
+                arrayListOf("one",
+                    "two",
+                    "three",
+                    "four",
+                    "five")),
             TextStep(3, "This is a text Question",
                 "Please choose and answer in the text box", true,
                 "Answer Here"),
