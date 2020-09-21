@@ -7,7 +7,7 @@
             android:shape="ring"
             android:thickness="@dimen/indicator_size"
             android:useLevel="false">
-            <solid android:color="?colorPrimary"/>
+            <solid android:color="@color/color_primary"/>
         </shape>
     </item>
 </layer-list>
