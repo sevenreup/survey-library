@@ -32,6 +32,7 @@ class MultiSelectionFragment : Fragment() {
         super.onCreate(savedInstanceState)
         args = QuestionFragmentArgs(requireArguments())
         answers = requireArguments().getStringArrayList(LIST_OFF_QUESTIONS)
+        answer.id = args.id
         answer.startDate = Date()
     }
 

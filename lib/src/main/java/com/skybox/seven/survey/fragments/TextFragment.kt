@@ -34,6 +34,9 @@ class TextFragment : Fragment() {
             args = QuestionFragmentArgs(it)
             hint = it.getString(HINT, "Answer")
         }
+
+        answer.value?.id = args.id
+        answer.value?.startDate = Date()
     }
 
     override fun onCreateView(

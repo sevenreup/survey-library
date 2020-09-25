@@ -43,7 +43,7 @@ class ArrayBooleanFragment : Fragment() {
             args = QuestionFragmentArgs(this)
             listMore = getStringArrayList(LIST_OFF_QUESTIONS)
         }
-
+        answer.id = args.id
         answer.startDate = Date()
     }
 

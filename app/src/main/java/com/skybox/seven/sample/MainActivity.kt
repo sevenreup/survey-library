@@ -71,11 +71,11 @@ class MainActivity : AppCompatActivity(), SurveyCallbacks {
             when(it.value.type) {
                 Result.MULTI -> {
                     val stuff = it.value as MultiChoiceResult
-                    Log.e("TAG", "key: ${it.key} answers: ${stuff.answers} start: ${stuff.startDate} end: ${stuff.endDate}")
+                    Log.e("TAG", "key: ${it.key} id: ${stuff.id} answers: ${stuff.answers} start: ${stuff.startDate} end: ${stuff.endDate}")
                 }
                 else -> {
-                    val stuff = it.value as BooleanResult
-                    Log.e("TAG", "key: ${it.key} answers: ${stuff.answer} start: ${stuff.startDate} end: ${stuff.endDate}")
+                    val stuff = it.value
+                    Log.e("TAG", "key: ${it.key} id: ${stuff.id} start: ${stuff.startDate} end: ${stuff.endDate}")
                 }
             }
         }

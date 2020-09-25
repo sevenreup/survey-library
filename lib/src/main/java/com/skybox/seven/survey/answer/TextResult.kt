@@ -5,8 +5,8 @@ import java.util.*
 
 @Parcelize
 data class TextResult(
-    override val id: Int = 0,
-    override val startDate: Date = Date(),
+    override var id: Int = 0,
+    override var startDate: Date = Date(),
     override var endDate: Date = Date(),
     override val type: Int = Result.TEXT,
     var text: String? = null,

@@ -25,6 +25,7 @@ class BooleanFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         args = QuestionFragmentArgs(requireArguments())
+        answer.id = args.id
         answer.startDate = Date()
     }
 
